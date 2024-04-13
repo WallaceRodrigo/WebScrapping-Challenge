@@ -29,21 +29,26 @@ public class WebScrap
         scientificName = node.ChildNodes[2].InnerText,
         group = node.ChildNodes[3].InnerText,
         brand = node.ChildNodes[4].InnerText,
-        components = nodeComponents.Skip(1).Select(node => (
-          new Dictionary<string, string>
-          {
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[0].InnerText)}", node.ChildNodes[0].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[1].InnerText)}", node.ChildNodes[1].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[2].InnerText)}", node.ChildNodes[2].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[3].InnerText)}", node.ChildNodes[3].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[4].InnerText)}", node.ChildNodes[4].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[5].InnerText)}", node.ChildNodes[5].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[6].InnerText)}", node.ChildNodes[6].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[7].InnerText)}", node.ChildNodes[7].InnerText },
-            {$"{WebUtility.HtmlDecode(nodeComponents[0].ChildNodes[8].InnerText)}", node.ChildNodes[8].InnerText },
-          }
-        )),
+        components = createComponents(nodeComponents.Skip(1), nodeComponents[0])
       };
+
+      IEnumerable<Dictionary<string, string>> createComponents(IEnumerable<HtmlNode> nodes, HtmlNode referenceNode)
+      {
+        var components = new List<Dictionary<string, string>>();
+        var propertyNames = referenceNode.ChildNodes.Select(n => WebUtility.HtmlDecode(n.InnerText)).ToArray();
+
+        foreach (var node in nodes)
+        {
+          var component = new Dictionary<string, string>();
+          for (int i = 0; i < propertyNames.Length; i++)
+          {
+            component[propertyNames[i]] = node.ChildNodes[i].InnerText;
+          }
+          components.Add(component);
+        }
+
+        return components;
+      }
 
       return Aliments;
 
