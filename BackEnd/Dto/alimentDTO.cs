@@ -7,5 +7,6 @@ namespace BackEnd.Dto
         public string? scientificName { get; set; }
         public string? group { get; set; }
         public string? brand { get; set; }
+        public IEnumerable<Dictionary<string, string>>? components { get; set; }
     }
 }
