@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace BackEnd.Models
 {
     public class Aliment
@@ -7,6 +9,6 @@ namespace BackEnd.Models
         public string? scientificName { get; set; }
         public string? group { get; set; }
         public string? brand { get; set; }
-        public IEnumerable<Dictionary<string, string>>? components { get; set; }
+        [NotMapped] public IEnumerable<Dictionary<string, string>>? components { get; set; }
     }
 }

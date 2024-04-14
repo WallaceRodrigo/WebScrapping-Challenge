@@ -2,8 +2,12 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
+using BackEnd.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AlimentContext>();
 
 // Add services to the container.
 builder.Services.AddControllers();

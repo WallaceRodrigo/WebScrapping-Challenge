@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZdoengAWod0zPkV4Bno+oXf80irtwq3onIuCtfXCQGEyXWTtLn46B8AE0gIaErWXrq+2lCF7E8DbTh6Ch+ltXA==",
+  "dgSpecHash": "DOgNfmFCX2ReH7Wsc21NOq3QBjlSrbuF1xQ0Dh8qhbCAv0h71US+ya87wTmGvOZLBAVhhFqgNkaC/jNQNenEyQ==",
   "success": true,
   "projectFilePath": "/home/wallace/Documents/WebScrapping-Challenge/BackEnd/BackEnd.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "/home/wallace/.nuget/packages/microsoft.entityframeworkcore.design/7.0.4/microsoft.entityframeworkcore.design.7.0.4.nupkg.sha512",
     "/home/wallace/.nuget/packages/microsoft.entityframeworkcore.relational/7.0.4/microsoft.entityframeworkcore.relational.7.0.4.nupkg.sha512",
     "/home/wallace/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.4/microsoft.entityframeworkcore.sqlserver.7.0.4.nupkg.sha512",
+    "/home/wallace/.nuget/packages/microsoft.entityframeworkcore.tools/7.0.0/microsoft.entityframeworkcore.tools.7.0.0.nupkg.sha512",
     "/home/wallace/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/home/wallace/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "/home/wallace/.nuget/packages/microsoft.extensions.caching.memory/7.0.0/microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",

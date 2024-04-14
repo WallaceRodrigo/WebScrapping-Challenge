@@ -1,15 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BackEnd.Models
 {
   public class AlimentContext : DbContext
   {
-    public DbSet<string>? id { get; set; }
-    public DbSet<string>? name { get; set; }
-    public DbSet<string>? scientificName { get; set; }
-    public DbSet<string>? group { get; set; }
-    public DbSet<string>? brand { get; set; }
-    public IEnumerable<Dictionary<string, string>>? components { get; set; }
+    public DbSet<Aliment> Aliment { get; set; }
 
     public AlimentContext(DbContextOptions<AlimentContext> options) : base(options){ }
 
