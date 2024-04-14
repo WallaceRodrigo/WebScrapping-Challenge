@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FluentAssertions.AspNetCore.MVC": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.60, )"

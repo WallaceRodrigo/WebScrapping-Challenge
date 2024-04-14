@@ -1,12 +1,12 @@
 using HtmlAgilityPack;
-using BackEnd.Dto;
+using BackEnd.Models;
 using System.Net;
 
 namespace BackEnd.Services;
 
 public class WebScrap
 {
-  public List<alimentDTO> scrap()
+  public List<IAliment> scrap()
   {
     var html = @"https://www.tbca.net.br/base-dados/composicao_estatistica.php?pagina=1&atuald=1#";
 
@@ -22,7 +22,7 @@ public class WebScrap
       var htmlDocComponents = web.Load(componentsHtml);
       var nodeComponents = htmlDocComponents.DocumentNode.SelectNodes("//tr");
 
-      var Aliments = new alimentDTO
+      var Aliments = new IAliment
       {
         id = node.ChildNodes[0].InnerText,
         name = node.ChildNodes[1].InnerText,

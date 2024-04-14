@@ -5,13 +5,13 @@
 namespace BackEnd.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateAlimentTable : Migration
+    public partial class AlimentsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Aliment",
+                name: "aliment",
                 columns: table => new
                 {
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -22,7 +22,7 @@ namespace BackEnd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Aliment", x => x.id);
+                    table.PrimaryKey("PK_aliment", x => x.id);
                 });
         }
 
@@ -30,7 +30,7 @@ namespace BackEnd.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Aliment");
+                name: "aliment");
         }
     }
 }

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEnd.Models
 {
-    public class Aliment
+    public class IAliment
     {
         public string? id { get; set; }
         public string? name { get; set; }

@@ -5,7 +5,7 @@ namespace BackEnd.Models
 {
   public class AlimentContext : DbContext
   {
-    public DbSet<Aliment> Aliment { get; set; }
+    public DbSet<IAliment> aliment { get; set; }
 
     public AlimentContext(DbContextOptions<AlimentContext> options) : base(options){ }
 
@@ -15,7 +15,7 @@ namespace BackEnd.Models
     {
         if (!optionsBuilder.IsConfigured)
         {
-            var connectionString = "Server=localhost;Database=WebScrappingDB;User=SA;Password=SqlServer123!;TrustServerCertificate=True";
+            var connectionString = "Server=localhost;Database=WebScrappingDB;User=sa;Password=SqlServer123!;TrustServerCertificate=True";
             optionsBuilder.UseSqlServer(connectionString);
         }
     }

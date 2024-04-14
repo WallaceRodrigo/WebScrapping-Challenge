@@ -4,13 +4,15 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
 using BackEnd.Models;
 using Microsoft.EntityFrameworkCore;
+using BackEnd.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AlimentContext>();
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddDbContext<AlimentContext>();
+builder.Services.AddScoped<IAlimentsRepository, AlimentsRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -20,25 +22,19 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddHttpClient();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy", builder =>
-    {
-        builder
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-
-    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
-    {
-    });
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://nominatim.openstreetmap.org",
+                                              "https://openstreetmap.org");
+                      });
 });
 
 var app = builder.Build();
 
-app.UseCors("CorsPolicy");
+app.UseCors(c => c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 
 // Configure the HTTP request pipeline.
@@ -55,3 +51,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

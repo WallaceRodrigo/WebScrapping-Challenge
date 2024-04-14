@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(AlimentContext))]
-    [Migration("20240414001149_CreateAlimentTable")]
-    partial class CreateAlimentTable
+    [Migration("20240414031910_AlimentsTable")]
+    partial class AlimentsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace BackEnd.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BackEnd.Models.Aliment", b =>
+            modelBuilder.Entity("BackEnd.Models.IAliment", b =>
                 {
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
@@ -43,7 +43,7 @@ namespace BackEnd.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Aliment");
+                    b.ToTable("aliment");
                 });
 #pragma warning restore 612, 618
         }

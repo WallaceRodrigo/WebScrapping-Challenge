@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "DOgNfmFCX2ReH7Wsc21NOq3QBjlSrbuF1xQ0Dh8qhbCAv0h71US+ya87wTmGvOZLBAVhhFqgNkaC/jNQNenEyQ==",
+  "dgSpecHash": "aqugOV87zPXQRL3chzdzn487XiPeanEDdeuBCs3yR0HDBtpvOlGwAzN/1QROWn0F6dpT1B+EFXOcYWjONPzodQ==",
   "success": true,
   "projectFilePath": "/home/wallace/Documents/WebScrapping-Challenge/BackEnd/BackEnd.csproj",
   "expectedPackageFiles": [
     "/home/wallace/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/home/wallace/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
+    "/home/wallace/.nuget/packages/fluentassertions/6.0.0/fluentassertions.6.0.0.nupkg.sha512",
+    "/home/wallace/.nuget/packages/fluentassertions.aspnetcore.mvc/4.2.0/fluentassertions.aspnetcore.mvc.4.2.0.nupkg.sha512",
     "/home/wallace/.nuget/packages/htmlagilitypack/1.11.60/htmlagilitypack.1.11.60.nupkg.sha512",
     "/home/wallace/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/wallace/.nuget/packages/microsoft.aspnetcore.cors/2.2.0/microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",

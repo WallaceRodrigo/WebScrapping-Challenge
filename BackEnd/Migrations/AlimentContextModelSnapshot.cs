@@ -21,7 +21,7 @@ namespace BackEnd.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BackEnd.Models.Aliment", b =>
+            modelBuilder.Entity("BackEnd.Models.IAliment", b =>
                 {
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
@@ -40,7 +40,7 @@ namespace BackEnd.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Aliment");
+                    b.ToTable("aliment");
                 });
 #pragma warning restore 612, 618
         }
