@@ -24,7 +24,7 @@ public class WebScrap
 
       var Aliments = new IAliment
       {
-        id = node.ChildNodes[0].InnerText,
+        AlimentId = node.ChildNodes[0].InnerText,
         name = node.ChildNodes[1].InnerText,
         scientificName = node.ChildNodes[2].InnerText,
         group = node.ChildNodes[3].InnerText,

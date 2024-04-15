@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AlimentContext>();
+builder.Services.AddDbContext<WebScrappingDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Server=127.0.0.1;Database=WebScrappingDB;User=SA;Password=Password123;TrustServerCertificate=True")));
 builder.Services.AddScoped<IAlimentsRepository, AlimentsRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

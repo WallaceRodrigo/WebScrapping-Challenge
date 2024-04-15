@@ -31,10 +31,10 @@ public class webScrapController : Controller
     {
         WebScrap webScrap = new WebScrap();
         var response = webScrap.scrap();
-
+    
         var test = new IAliment
         {
-            id = response[0].id,
+            AlimentId = response[0].AlimentId,
             name = response[0].name,
             scientificName = response[0].scientificName,
             group = response[0].group,
