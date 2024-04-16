@@ -8,9 +8,9 @@ public class WebScrap
 {
   private readonly HtmlWeb _web = new HtmlWeb();
 
-  public List<IAliment> Scrap()
+  public IEnumerable<IAliment> Scrap()
   {
-    var html = @"https://www.tbca.net.br/base-dados/composicao_estatistica.php?pagina=1&atuald=1#";
+    var html = @$"https://www.tbca.net.br/base-dados/composicao_estatistica.php?pagina={1}&atuald={1}#";
 
     var htmlDoc = _web.Load(html);
 

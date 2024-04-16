@@ -9,39 +9,50 @@ namespace BackEnd.Controllers;
 [Route("/")]
 public class webScrapController : Controller
 {
-    private readonly IAlimentsRepository _repository;
-    public webScrapController(IAlimentsRepository repository)
+  private readonly IAlimentsRepository _repository;
+  public webScrapController(IAlimentsRepository repository)
+  {
+    _repository = repository;
+  }
+
+  [HttpGet]
+  public ActionResult<IEnumerable<IAliment>> get()
+  {
+    WebScrap webScrap = new WebScrap();
+
+    var scrapResponse = webScrap.Scrap();
+
+    return Ok(scrapResponse);
+  }
+
+  [HttpPost("addAliment")]
+  public IActionResult addAliment()
+  {
+    WebScrap webScrap = new WebScrap();
+    var scrapResponse = webScrap.Scrap();
+
+    if (scrapResponse == null)
     {
-        _repository = repository;
+      return BadRequest();
     }
 
-    [HttpGet]
-    public IActionResult get()
+    var dbResponse = scrapResponse.Select(a =>
     {
-        WebScrap webScrap = new WebScrap();
+      var aliment = new IAliment
+      {
+        AlimentId = a.AlimentId,
+        name = a.name,
+        scientificName = a.scientificName,
+        group = a.group,
+        brand = a.brand,
+        components = a.components
+      };
 
-        var response = webScrap.Scrap();
+      _repository.AddAliment(aliment);
 
-        return Ok(response);
-    }
+      return CreatedAtAction(nameof(get), new { id = aliment.AlimentId }, aliment);
+    });
 
-    [Route("addAliment")]
-    [HttpGet]
-    public IActionResult addAliment()
-    {
-        WebScrap webScrap = new WebScrap();
-        var response = webScrap.Scrap();
-    
-        var test = new IAliment
-        {
-            AlimentId = response[0].AlimentId,
-            name = response[0].name,
-            scientificName = response[0].scientificName,
-            group = response[0].group,
-            brand = response[0].brand,
-            components = response[0].components,
-        };
-
-        return Created("", _repository.AddAliment(test));
-    }
+    return Created("", dbResponse);
+  }
 }

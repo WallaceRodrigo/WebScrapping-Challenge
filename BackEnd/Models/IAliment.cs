@@ -4,11 +4,11 @@ namespace BackEnd.Models;
 
 public class IAliment
 {
-    [Key]
-    public string? AlimentId { get; set; }
-    public string? name { get; set; }
-    public string? scientificName { get; set; }
-    public string? group { get; set; }
-    public string? brand { get; set; }
-    [NotMapped] public IEnumerable<ISingleComponent>? components { get; set; }
+  [Key]
+  public string? AlimentId { get; set; }
+  public string? name { get; set; }
+  public string? scientificName { get; set; }
+  public string? group { get; set; }
+  public string? brand { get; set; }
+  [NotMapped] public IEnumerable<ISingleComponent>? components { get; set; }
 }
