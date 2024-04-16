@@ -20,7 +20,7 @@ public class webScrapController : Controller
     {
         WebScrap webScrap = new WebScrap();
 
-        var response = webScrap.scrap();
+        var response = webScrap.Scrap();
 
         return Ok(response);
     }
@@ -30,7 +30,7 @@ public class webScrapController : Controller
     public IActionResult addAliment()
     {
         WebScrap webScrap = new WebScrap();
-        var response = webScrap.scrap();
+        var response = webScrap.Scrap();
     
         var test = new IAliment
         {

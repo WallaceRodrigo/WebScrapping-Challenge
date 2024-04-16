@@ -9,5 +9,5 @@ public class IAliment
     public string? scientificName { get; set; }
     public string? group { get; set; }
     public string? brand { get; set; }
-    [NotMapped] public IEnumerable<Dictionary<string, string>>? components { get; set; }
+    [NotMapped] public IEnumerable<ISingleComponent>? components { get; set; }
 }

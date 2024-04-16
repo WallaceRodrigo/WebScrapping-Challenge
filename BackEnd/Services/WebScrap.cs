@@ -6,20 +6,20 @@ namespace BackEnd.Services;
 
 public class WebScrap
 {
-  public List<IAliment> scrap()
+  private readonly HtmlWeb _web = new HtmlWeb();
+
+  public List<IAliment> Scrap()
   {
     var html = @"https://www.tbca.net.br/base-dados/composicao_estatistica.php?pagina=1&atuald=1#";
 
-    HtmlWeb web = new HtmlWeb();
+    var htmlDoc = _web.Load(html);
 
-    var htmlDoc = web.Load(html);
+    var node = htmlDoc.DocumentNode.SelectNodes("//tr").Skip(1);
 
-    var node = htmlDoc.DocumentNode.SelectNodes("//tr");
-
-    return node.Skip(1).Select(node =>
+    return node.Select(node =>
     {
       var componentsHtml = @$"https://www.tbca.net.br/base-dados/int_composicao_estatistica.php?cod_produto={node.ChildNodes[0].InnerText}";
-      var htmlDocComponents = web.Load(componentsHtml);
+      var htmlDocComponents = _web.Load(componentsHtml);
       var nodeComponents = htmlDocComponents.DocumentNode.SelectNodes("//tr");
 
       var Aliments = new IAliment
@@ -29,29 +29,40 @@ public class WebScrap
         scientificName = node.ChildNodes[2].InnerText,
         group = node.ChildNodes[3].InnerText,
         brand = node.ChildNodes[4].InnerText,
-        components = createComponents(nodeComponents.Skip(1), nodeComponents[0])
+        components = createComponents(nodeComponents, node.ChildNodes[0].InnerText)
       };
-
-      IEnumerable<Dictionary<string, string>> createComponents(IEnumerable<HtmlNode> nodes, HtmlNode referenceNode)
-      {
-        var components = new List<Dictionary<string, string>>();
-        var propertyNames = referenceNode.ChildNodes.Select(n => WebUtility.HtmlDecode(n.InnerText)).ToArray();
-
-        foreach (var node in nodes)
-        {
-          var component = new Dictionary<string, string>();
-          for (int i = 0; i < propertyNames.Length; i++)
-          {
-            component[propertyNames[i]] = node.ChildNodes[i].InnerText;
-          }
-          components.Add(component);
-        }
-
-        return components;
-      }
 
       return Aliments;
 
+    }).ToList();
+  }
+
+  private IEnumerable<ISingleComponent> createComponents(IEnumerable<HtmlNode> nodes, string alimentId)
+  {
+    var referenceNode = nodes.First();
+    var propertyNames = referenceNode.ChildNodes.Select(n => WebUtility.HtmlDecode(n.InnerText)).ToArray();
+
+    return nodes.Skip(1).Select(node =>
+    {
+      var component = new Dictionary<string, string>();
+      for (int i = 0; i < propertyNames.Length; i++)
+      {
+        component[propertyNames[i]] = node.ChildNodes[i].InnerText;
+      }
+
+      return new ISingleComponent
+      {
+        AlimentId = alimentId,
+        Componente = component["Componente"],
+        Unidades = component["Unidades"],
+        ValorPor100g = component["Valor por 100 g"],
+        DesvioPadrão = component["Desvio padrão"],
+        ValorMínimo = component["Valor Mínimo"],
+        ValorMáximo = component["Valor Máximo"],
+        NúmeroDeDadosUtilizado = component["Número de dados utilizados"],
+        Referências = component["Referências"],
+        TipoDeDados = component["Tipo de dados"],
+      };
     }).ToList();
   }
 }

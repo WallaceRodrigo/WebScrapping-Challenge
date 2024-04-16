@@ -23,6 +23,9 @@ namespace BackEnd.Repository
         brand = aliment.brand,
         //components = aliment.components,
       });
+
+      // _context.SingleComponent.AddRange(aliment.components);
+
       _context.SaveChanges();
 
       return response.Entity;
