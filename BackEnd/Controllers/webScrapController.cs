@@ -38,7 +38,8 @@ public class webScrapController : Controller
             name = response[0].name,
             scientificName = response[0].scientificName,
             group = response[0].group,
-            brand = response[0].brand
+            brand = response[0].brand,
+            components = response[0].components,
         };
 
         return Created("", _repository.AddAliment(test));

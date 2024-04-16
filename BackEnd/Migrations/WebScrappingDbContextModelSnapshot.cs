@@ -43,19 +43,6 @@ namespace BackEnd.Migrations
                     b.ToTable("Aliments");
                 });
 
-            modelBuilder.Entity("BackEnd.Models.IComponents", b =>
-                {
-                    b.Property<string>("ComponentsId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AlimentId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ComponentsId");
-
-                    b.ToTable("Components");
-                });
-
             modelBuilder.Entity("BackEnd.Models.ISingleComponent", b =>
                 {
                     b.Property<string>("SingleComponentId")
@@ -67,14 +54,8 @@ namespace BackEnd.Migrations
                     b.Property<string>("Componente")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ComponentsId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("DesvioPadrão")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IComponentsComponentsId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("NúmeroDeDadosUtilizado")
                         .HasColumnType("nvarchar(max)");
@@ -99,21 +80,7 @@ namespace BackEnd.Migrations
 
                     b.HasKey("SingleComponentId");
 
-                    b.HasIndex("IComponentsComponentsId");
-
                     b.ToTable("SingleComponent");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.ISingleComponent", b =>
-                {
-                    b.HasOne("BackEnd.Models.IComponents", null)
-                        .WithMany("SingleComponent")
-                        .HasForeignKey("IComponentsComponentsId");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.IComponents", b =>
-                {
-                    b.Navigation("SingleComponent");
                 });
 #pragma warning restore 612, 618
         }

@@ -21,10 +21,12 @@ namespace BackEnd.Repository
         scientificName = aliment.scientificName,
         group = aliment.group,
         brand = aliment.brand,
-        //components = aliment.components,
       });
 
-      // _context.SingleComponent.AddRange(aliment.components);
+      if (aliment.components != null)
+      {
+        _context.SingleComponent.AddRange(aliment.components);
+      }
 
       _context.SaveChanges();
 

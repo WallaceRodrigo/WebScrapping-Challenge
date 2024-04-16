@@ -53,6 +53,7 @@ public class WebScrap
       return new ISingleComponent
       {
         AlimentId = alimentId,
+        SingleComponentId = $"{alimentId}-{component["Componente"]}-{component["Unidades"]}",
         Componente = component["Componente"],
         Unidades = component["Unidades"],
         ValorPor100g = component["Valor por 100 g"],
