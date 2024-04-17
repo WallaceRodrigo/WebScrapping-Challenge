@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BackEnd.Services;
 using BackEnd.Repository;
 using BackEnd.Models;
+using Azure;
 
 namespace BackEnd.Controllers;
 
@@ -15,21 +16,21 @@ public class webScrapController : Controller
     _repository = repository;
   }
 
-  [HttpGet]
-  public ActionResult<IEnumerable<IAliment>> get()
+  [HttpGet("getAllAliments/{pagina}/{atualD}")]
+  public ActionResult<IEnumerable<IAliment>> getAllAliments(int pagina, int atualD)
   {
     WebScrap webScrap = new WebScrap();
 
-    var scrapResponse = webScrap.Scrap();
+    var scrapResponse = webScrap.Scrap(pagina, atualD);
 
     return Ok(scrapResponse);
   }
 
-  [HttpPost("addAliment")]
-  public IActionResult addAliment()
+  [HttpPost("addAliment/{pagina}/{atualD}")]
+  public IActionResult addAliment(int pagina, int atualD)
   {
     WebScrap webScrap = new WebScrap();
-    var scrapResponse = webScrap.Scrap();
+    var scrapResponse = webScrap.Scrap(pagina, atualD);
 
     if (scrapResponse == null)
     {
@@ -50,9 +51,24 @@ public class webScrapController : Controller
 
       _repository.AddAliment(aliment);
 
-      return CreatedAtAction(nameof(get), new { id = aliment.AlimentId }, aliment);
+      return CreatedAtAction(nameof(getAllAliments), new { id = aliment.AlimentId }, aliment);
     });
 
     return Created("", dbResponse);
+  }
+
+  [HttpGet("getAliment/{name}")]
+  public ActionResult<IAliment> getAliment(string name)
+  {
+    try
+    {
+      var aliment = _repository.GetAliment(name);
+
+      return Ok(aliment);
+    }
+    catch (RequestFailedException e)
+    {
+      return NotFound(e.Message);
+    }
   }
 }
