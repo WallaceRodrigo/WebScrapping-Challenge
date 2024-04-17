@@ -6,25 +6,84 @@ li {
   list-style: none;
 }
 
-#alimentsTable {
+#alimentsTable, #componentsTable {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#alimentsTable td, #alimentsTable th {
+#alimentsTable td, #alimentsTable th, #componentsTable td, #componentsTable th {
   border: 1px solid #bdbdbd;
   padding: 8px;
 }
 
-/* #alimentsTable tr:nth-child(even){background-color: #3a3a3a;} */
+#componentsTable tr:nth-child(even){background-color: #3a3a3a;}
 
 #alimentsTable tr:hover {background-color: #323232;}
 
-#alimentsTable th {
+#alimentsTable th{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   background-color: #bdbdbd;
   color: rgb(0, 0, 0);
 }
+
+#componentsTableDiv th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #e9da9c;
+  color: rgb(0, 0, 0);
+}
+
+#componentsTableDiv {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 25%;
+  background-color: orange;
+  overflow: scroll;
+}
+
+#componentsTable {
+  background-color: #323232;
+}
+
+#homeDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 99vw;
+}
+
+input {
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  margin: 20px;
+}
+
+/* @keyframes fadeIn {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+} */

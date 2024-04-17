@@ -32,14 +32,18 @@ function Home() {
   }, [])
 
   const onCLick = (data: SingleComponent[]) => {
+    const componentsTableDiv = document.getElementById('componentsTableDiv');
+
+    componentsTableDiv?.scrollIntoView({ behavior: 'smooth' });
+
     setAlimentData(data);
     console.log(data);
   };
 
   return (
-    <div>
+    <div id='homeDiv'>
       <h1>Home</h1>
-      <input type="text" placeholder="Pesquisar Alimento" />
+      <input type="text" placeholder="Pesquisar Alimento"/>
       {
         isLoading ? <h3>Loading...</h3> :
           <table id="alimentsTable">
@@ -52,9 +56,9 @@ function Home() {
                 <th>Marca</th>
               </tr>
             </thead>
-            {
-              apiResponse.map((data: Aliment) => (
-                <tbody>
+            <tbody>
+              {
+                apiResponse.map((data: Aliment) => (
                   <tr onClick={() => onCLick(data.components)}>
                     <td>{data.alimentId}</td>
                     <td>{data.name}</td>
@@ -62,45 +66,47 @@ function Home() {
                     <td>{data.group}</td>
                     <td>{data.brand}</td>
                   </tr>
-                </tbody>
-              ))
-            }
-          </table>
-      }
-      {
-        alimentData.length < 1 ? <></> :
-          <table>
-            <thead>
-              <tr>
-                <th>Componente</th>
-                <th>unidades</th>
-                <th>valorPor100g</th>
-                <th>desvioPadrão</th>
-                <th>valorMínimo</th>
-                <th>valorMáximo</th>
-                <th>númeroDeDadosUtilizado</th>
-                <th>referências</th>
-                <th>tipoDeDados</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                alimentData.map((data: SingleComponent) => (
-                  <tr>
-                    <td>{data.componente}</td>
-                    <td>{data.unidades}</td>
-                    <td>{data.valorPor100g}</td>
-                    <td>{data.desvioPadrão}</td>
-                    <td>{data.valorMínimo}</td>
-                    <td>{data.valorMáximo}</td>
-                    <td>{data.númeroDeDadosUtilizado}</td>
-                    <td>{data.referências}</td>
-                    <td>{data.tipoDeDados}</td>
-                  </tr>
                 ))
               }
             </tbody>
           </table>
+      }
+      {
+        alimentData.length < 1 ? <></> :
+          <div id='componentsTableDiv' className='fadeIn'>
+            <table id="componentsTable">
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Unidades</th>
+                  <th>Valor Por 100g</th>
+                  <th>Desvio Padrão</th>
+                  <th>Valor Mínimo</th>
+                  <th>Valor Máximo</th>
+                  <th>Número De Dados Utilizado</th>
+                  <th>Referências</th>
+                  <th>Tipo De Dados</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  alimentData.map((data: SingleComponent) => (
+                    <tr>
+                      <td>{data.componente}</td>
+                      <td>{data.unidades}</td>
+                      <td>{data.valorPor100g}</td>
+                      <td>{data.desvioPadrão}</td>
+                      <td>{data.valorMínimo}</td>
+                      <td>{data.valorMáximo}</td>
+                      <td>{data.númeroDeDadosUtilizado}</td>
+                      <td>{data.referências}</td>
+                      <td>{data.tipoDeDados}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
       }
     </div>
   )
