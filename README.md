@@ -4,6 +4,9 @@
 O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dados do site TBCA.net.br e exibi-los em uma interface de usuário amigável. A aplicação permite aos usuários visualizar informações sobre alimentos, incluindo seus componentes nutricionais.
 
 ## Tecnologias Utilizadas
+### Sistema Operacional Ultilizado Para O Desenvolvimento:
+ - **Linux Ubuntu 22.04.4 LTS**
+
 ### Backend
 - **FluentAssertions.AspNetCore.MVC:** Utilizado para testes de integração.
 - **HtmlAgilityPack:** Utilizado para fazer o parsing do HTML e extrair os dados do site TBCA.net.br.
@@ -34,18 +37,18 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
    - Clone o repositório do projeto.
    - Navegue até a pasta `BackEnd`.
    - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema.
-   - Certifique-se de ter a ferramenta dotnet-ef intalada `dotnet tool install --global dotnet-ef`
-     em caso do erro "Não foi possível executar porque o comando ou o arquivo especificado não foi encontrado":
-     ```shell
-     export PATH="$PATH:/home/{seuUser}/.dotnet/tools"
-     ```
+   - Certifique-se de ter a ferramenta dotnet-ef instalada `dotnet tool install --global dotnet-ef`
+   - em caso do erro "Não foi possível executar porque o comando ou o arquivo especificado não foi encontrado":
+   ```shell
+   export PATH="$PATH:/home/{seuUser}/.dotnet/tools"
+   ```
   
    O banco de dados, deverá ser iniciado com o comando:
    ```shell
    docker-compose up -d --build
    ```
    
-   Para conectar ao seu sistema de gerenciamento de banco de dados, utilize as seguintes credenciais:
+   Para conectar ao seu sistema de gerenciamento de banco de dados, utilize as seguintes credenciais e o Azure Data Studio:
    - `Server`: localhost
    - `User`: sa
    - `Password`: Password123
@@ -70,9 +73,8 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
    - O aplicativo estará acessível em `http://localhost:3000`.
 
 ## Descrição das Funcionalidades
-- **Extrair Alimentos:** Na página inicial, é possível inserir o número da página desejada do site TBCA.net.br e extrair os alimentos dessa página.
-- **Pesquisar Alimentos:** Também é possível pesquisar por alimentos específicos digitando o nome do alimento na barra de pesquisa.
-Contribuição
+- **Extrair Alimentos:** Na página inicial, é possível inserir o número da página desejada do site TBCA.net.br e extrair os alimentos dessa página, os dados extraido são salvos no bando de dados SQLServer.
+- **Pesquisar Alimentos:** Também é possível pesquisar por alimentos específicos digitando o nome do alimento na barra de pesquisa, a pesquisa é feita a partir do bando de dados SQLServer.
 
 ## Descrição das Técnicas Utilizadas
 - **Web Scraping:** O backend utiliza a biblioteca HtmlAgilityPack para fazer o scraping do site TBCA.net.br e extrair os dados relacionados aos alimentos.
