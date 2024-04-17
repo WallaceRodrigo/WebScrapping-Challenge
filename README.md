@@ -31,9 +31,34 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
 
 ## Instruções de Instalação e Uso
 1. **Backend:**
-   - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema.
    - Clone o repositório do projeto.
    - Navegue até a pasta `BackEnd`.
+   - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema.
+   - Certifique-se de ter a ferramenta dotnet-ef intalada `dotnet tool install --global dotnet-ef`
+     em caso do erro "Não foi possível executar porque o comando ou o arquivo especificado não foi encontrado":
+     ```shell
+     export PATH="$PATH:/home/{seuUser}/.dotnet/tools"
+     ```
+  
+   O banco de dados, deverá ser iniciado com o comando:
+   ```shell
+   docker-compose up -d --build
+   ```
+   
+   Para conectar ao seu sistema de gerenciamento de banco de dados, utilize as seguintes credenciais:
+   - `Server`: localhost
+   - `User`: sa
+   - `Password`: Password123
+   - `Trust server certificate`: true
+
+   Ou a connection string:
+   `"Server=localhost;Database=WebScrappingDB;User=SA;Password=Password123;TrustServerCertificate=True"`
+
+   As migrations devem ser aplicadas para subir a DataBase antes da API com:
+   ```shell
+   dotnet ef database update
+   ```
+   
    - Execute o comando `dotnet run` para iniciar o servidor backend.
    - O servidor backend estará acessível em `https://localhost:7070`.
 
