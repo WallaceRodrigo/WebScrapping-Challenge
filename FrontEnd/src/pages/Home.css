@@ -51,7 +51,7 @@ li {
   background-color: #323232;
 }
 
-#homeDiv {
+.homeDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,10 +60,11 @@ li {
 }
 
 input {
-  border-radius: 20px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
   border: none;
   padding: 10px;
-  margin: 20px;
+  margin: 10px 0px 20px 10px;
 }
 
 /* @keyframes fadeIn {
