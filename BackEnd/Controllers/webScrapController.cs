@@ -16,21 +16,21 @@ public class webScrapController : Controller
     _repository = repository;
   }
 
-  [HttpGet("getAllAliments/{pagina}/{atualD}")]
-  public ActionResult<IEnumerable<IAliment>> getAllAliments(int pagina, int atualD)
+  [HttpGet("getAllAliments/{pagina}")]
+  public ActionResult<IEnumerable<IAliment>> getAllAliments(int pagina)
   {
     WebScrap webScrap = new WebScrap();
 
-    var scrapResponse = webScrap.Scrap(pagina, atualD);
+    var scrapResponse = webScrap.Scrap(pagina);
 
     return Ok(scrapResponse);
   }
 
-  [HttpPost("addAliment/{pagina}/{atualD}")]
-  public IActionResult addAliment(int pagina, int atualD)
+  [HttpPost("addAliment/{pagina}")]
+  public IActionResult addAliment(int pagina)
   {
     WebScrap webScrap = new WebScrap();
-    var scrapResponse = webScrap.Scrap(pagina, atualD);
+    var scrapResponse = webScrap.Scrap(pagina);
 
     if (scrapResponse == null)
     {
@@ -58,7 +58,7 @@ public class webScrapController : Controller
   }
 
   [HttpGet("getAliment/{name}")]
-  public ActionResult<IAliment> getAliment(string name)
+  public ActionResult<IEnumerable<IAliment>> getAliment(string name)
   {
     try
     {

@@ -5,6 +5,6 @@ namespace BackEnd.Repository
   public interface IAlimentsRepository
   {
     IAliment AddAliment(IAliment aliment);
-    IAliment GetAliment(string name);
+    IEnumerable<IAliment> GetAliment(string name);
   }
 }

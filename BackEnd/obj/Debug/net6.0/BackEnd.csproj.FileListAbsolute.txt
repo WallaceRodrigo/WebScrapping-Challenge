@@ -83,7 +83,3 @@
 /home/wallace/Documents/WebScrapping-Challenge/BackEnd/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll
 /home/wallace/Documents/WebScrapping-Challenge/BackEnd/bin/Debug/net6.0/FluentAssertions.dll
 /home/wallace/Documents/WebScrapping-Challenge/BackEnd/bin/Debug/net6.0/FluentAssertions.AspNetCore.Mvc.dll
-/home/wallace/Documents/WebScrapping-Challenge/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.Design.dll
-/home/wallace/Documents/WebScrapping-Challenge/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
-/home/wallace/Documents/WebScrapping-Challenge/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
-/home/wallace/Documents/WebScrapping-Challenge/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.Design.dll
