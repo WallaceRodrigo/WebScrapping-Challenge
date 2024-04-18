@@ -2,36 +2,17 @@ import { useState } from 'react';
 import axios from 'axios';
 import './Home.css'
 import { Aliment, SingleComponent } from '../types/aliments.types';
-// import { Spinner } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner'
 
 function Home() {
   const [apiResponse, setApiResponse] = useState([]);
   const [alimentData, setAlimentData] = useState<SingleComponent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  //const fetchData = async () => {
-  //  try {
-  //    // const response = await axios.post('https://localhost:7070/addAliment', [{}]);
-  //    const response = await axios.get('https://localhost:7070/getAllAliments/1/1');
-//
-  //    setApiResponse(response.data);
-  //  } catch (error) {
-  //    console.log('Ocorreu um erro ao fazer a requisição', error);
-  //  }
-  //}
-//
-  //useEffect(() => { }, [alimentData])
-//
-  //useEffect(() => {
-    //    const didMount = async () => {
-    //      await fetchData()
-    //      setIsLoading(false);
-    //    }
-    //
-    //    didMount();
-  //}, [])
+  const [isLoadingExtract, setIsLoadingExtract] = useState(false);
 
   const onClickExtract = async () => {
+    setIsLoadingExtract(true);
+
     const pageNumber = (document.querySelector('#pageInput') as HTMLInputElement).value;
 
     if (pageNumber === '') {
@@ -45,12 +26,22 @@ function Home() {
     }
 
     try {
+      await axios.post(`https://localhost:7070/addAliment/${pageNumber}`)
+    } catch (error) {
+      if (error.response.data.includes("Cannot insert duplicate key")) {
+        alert('A página já foi extraída Anteriormente, porem os dados ainda serão exibidos, clique em OK para continuar');
+      } else {
+        console.log('Ocorreu um erro ao fazer a requisição:', error);
+      }
+    }
+
+    try {
       const response = await axios.get(`https://localhost:7070/getAllAliments/${pageNumber}`);
-
-      //await axios.post(`https://localhost:7070/getAllAliments/${pageNumber}`)
-
       setApiResponse(response.data);
+
       setIsLoading(false);
+      setIsLoadingExtract(false);
+
     } catch (error) {
       console.log('Ocorreu um erro ao fazer a requisição', error);
     }
@@ -67,7 +58,7 @@ function Home() {
     const filteredData = await axios.get(`https://localhost:7070/getAliment/${searchInput}`);
 
     console.log(filteredData);
-    
+
 
     setApiResponse(filteredData.data);
   }
@@ -76,9 +67,20 @@ function Home() {
     const componentsTableDiv = document.getElementById('componentsTableDiv');
 
     componentsTableDiv?.scrollIntoView({ behavior: 'smooth' });
+    componentsTableDiv?.classList.add('fadeIn');
 
     setAlimentData(data);
     console.log(data);
+  };
+
+  const onCLickCloseComponents = () => {
+    const componentsTableDiv = document.getElementById('componentsTableDiv');
+
+    componentsTableDiv?.classList.add('fadeOut');
+
+    setTimeout(() => {
+      setAlimentData([]);
+    }, 300);
   };
 
   return (
@@ -90,8 +92,15 @@ function Home() {
             <p>Digite o numero da pagina que deseja extrair de TBCA.net.br</p>
             <div>
               <input id="pageInput" type="text" placeholder="De 1 a 57" />
-              <button onClick={onClickExtract}>Extrair</button>
+              <button type="submit" onClick={onClickExtract}>Extrair</button>
             </div>
+            {
+              isLoadingExtract ?
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+                : <></>
+            }
           </div>
           :
           <div className='homeDiv'>
@@ -128,6 +137,7 @@ function Home() {
       {
         alimentData.length < 1 ? <></> :
           <div id='componentsTableDiv' className='fadeIn'>
+            <button onClick={onCLickCloseComponents}>X</button>
             <table id="componentsTable">
               <thead>
                 <tr>
