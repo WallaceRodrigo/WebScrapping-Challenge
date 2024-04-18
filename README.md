@@ -34,11 +34,14 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
 1. **Backend:**
    - Clone o repositório do projeto.
    - Navegue até a pasta `BackEnd`.
-   - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema `sudo apt install dotnet6`.
-   - Certifique-se de ter o `runtime do .NET` instalado em seu sistema `sudo apt install aspnetcore-runtime-6.0`.
-   - Certifique-se de ter o `Docker` e o `Docker-compose` instalados
-   - Caso não tenha-os instalados pode seguir o guia: [Guia De Instalação Docker](https://gist.github.com/WallaceRodrigo/8529d799add3f513ea4dbac5dc59d8d6)
-   - Certifique-se de ter a ferramenta dotnet-ef instalada `dotnet tool update dotnet-ef --version 7.0.4 --global`
+   - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema.
+     Caso não tenha execute o comando: `sudo apt install dotnet6`.
+   - Certifique-se de ter o `runtime do .NET` instalado em seu sistema.
+     Caso não tenha execute o comando: `sudo apt install aspnetcore-runtime-6.0`.
+   - Certifique-se de ter o `Docker` e o `Docker-compose` instalados.
+     Caso não tenha-os instalados pode seguir o guia: [Guia De Instalação Docker](https://gist.github.com/WallaceRodrigo/8529d799add3f513ea4dbac5dc59d8d6).
+   - Certifique-se de ter a ferramenta dotnet-ef instalada.
+     Caso não tenha execute o comando: `dotnet tool update dotnet-ef --version 7.0.4 --global`.
      
    - Agora verifique se a CLI foi instalada com sucesso com o comando:
    ```shell
@@ -76,10 +79,11 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
 
 3. **Frontend:**
    - Certifique-se de ter o `Node.js` instalado em seu sistema.
+     Caso não tenha instalado pode seguir o guia: [Guia De Instalação Node.js](https://gist.github.com/WallaceRodrigo/7c97bb1d6aed40c0e46663bd79d05f74).
    - Navegue até a pasta `FrontEnd`.
    - Execute o comando `npm install` para instalar as dependências do projeto.
    - Execute o comando `npm start` para iniciar o servidor de desenvolvimento do React.
-   - O aplicativo estará acessível em `http://localhost:3000`.
+   - Sera mostrado no console em qual endereço a aplicação podera ser acessada.
 
 ## Descrição das Funcionalidades
 - **Extrair Alimentos:** Na página inicial, é possível inserir o número da página desejada do site TBCA.net.br e extrair os alimentos dessa página, os dados extraido são salvos no bando de dados SQLServer.
