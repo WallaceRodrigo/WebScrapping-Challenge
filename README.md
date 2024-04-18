@@ -73,6 +73,7 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
 ## Descrição das Funcionalidades
 - **Extrair Alimentos:** Na página inicial, é possível inserir o número da página desejada do site TBCA.net.br e extrair os alimentos dessa página, os dados extraido são salvos no bando de dados SQLServer.
 - **Pesquisar Alimentos:** Também é possível pesquisar por alimentos específicos digitando o nome do alimento na barra de pesquisa, a pesquisa é feita a partir do bando de dados SQLServer.
+- **Exibir Componentes Detalhasdos Dos Alimentos:** Ao clicar em um dos alimentos da tabela uma nova janela ira abrir contendo uma tabela com todos os componentes do alimento selecionado.
 
 ## Descrição das Técnicas Utilizadas
 - **Web Scraping:** O backend utiliza a biblioteca HtmlAgilityPack para fazer o scraping do site TBCA.net.br e extrair os dados relacionados aos alimentos.
