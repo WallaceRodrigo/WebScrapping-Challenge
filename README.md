@@ -8,20 +8,18 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
  - **Linux Ubuntu 22.04.4 LTS**
 
 ### Backend
-- **FluentAssertions.AspNetCore.MVC:** Utilizado para testes de integração.
+- **FluentAssertions AspNetCore MVC:** Utilizado para testes de integração.
 - **HtmlAgilityPack:** Utilizado para fazer o parsing do HTML e extrair os dados do site TBCA.net.br.
-- **Microsoft.AspNetCore.Cors:** Utilizado para habilitar a política de CORS na aplicação.
-- **Microsoft.EntityFrameworkCore:** Utilizado para acesso e manipulação de dados no banco de dados.
-- **Microsoft.EntityFrameworkCore.Design:** Utilizado para a geração de migrações e execução de comandos relacionados ao EF Core.
-- **Microsoft.EntityFrameworkCore.SqlServer:** Utilizado como provedor de banco de dados SQL Server para o EF Core.
-- **Microsoft.EntityFrameworkCore.Tools:** Utilizado para a execução de comandos do EF Core no Visual Studio.
-- **Swashbuckle.AspNetCore:** Utilizado para a geração da documentação da API com o Swagger.
+- **AspNetCore Cors:** Utilizado para habilitar a política de CORS na aplicação.
+- **EntityFrameworkCore Design:** Utilizado para a geração de migrações e execução de comandos relacionados ao EF Core.
+- **EntityFrameworkCore SqlServer:** Utilizado como provedor de banco de dados SQL Server para o EF Core.
+- **EntityFrameworkCore Tools:** Utilizado para a execução de comandos do EF Core no Visual Studio.
 
 ### Frontend
 - **React:** Biblioteca JavaScript utilizada para construir a interface de usuário.
-- **react-axios:** Utilizado para fazer requisições HTTP no frontend.
-- **react-bootstrap:** Framework front-end utilizado para construir componentes de interface de usuário.
-- **react-router-dom:** Utilizado para navegação entre páginas na aplicação React.
+- **React Axios:** Utilizado para fazer requisições HTTP no frontend.
+- **Rect Bootstrap:** Framework front-end utilizado para construir componentes de interface de usuário.
+- **Rect Router Dom:** Utilizado para navegação entre páginas na aplicação React.
 
 ### Banco de Dados
 - **SQL Server:** Utilizado como banco de dados para armazenar os dados extraídos do site TBCA.net.br.
