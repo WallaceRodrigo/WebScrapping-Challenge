@@ -34,11 +34,21 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
 1. **Backend:**
    - Clone o repositório do projeto.
    - Navegue até a pasta `BackEnd`.
-   - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema.
-   - Certifique-se de ter a ferramenta dotnet-ef instalada `dotnet tool install --global dotnet-ef`
-   - em caso do erro "Não foi possível executar porque o comando ou o arquivo especificado não foi encontrado":
+   - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema `sudo apt install dotnet6`.
+   - Certifique-se de ter o `runtime do .NET` instalado em seu sistema `sudo apt install aspnetcore-runtime-6.0`.
+   - Certifique-se de ter a ferramenta dotnet-ef instalada `dotnet tool update dotnet-ef --version 7.0.4 --global`
+   - Certifique-se de ter o `Docker` e o `Docker-compose` instalados`
+     Caso não tenha-os instalados pode seguir o guia: [Guia De Instalação Docker]([https://www.google.com](https://gist.github.com/WallaceRodrigo/8529d799add3f513ea4dbac5dc59d8d6))
+     
+   - Agora verifique se a CLI foi instalada com sucesso com o comando:
    ```shell
-   export PATH="$PATH:/home/{seuUser}/.dotnet/tools"
+   dotnet ef
+   ```
+   Se você vir o unicórnio, significa que a instalação foi um sucesso.
+   
+   - Caso não funcione, talvez a instalação não tenha adicionado o path do dotnet ef no seu terminal bash, portanto, execute o seguinte comando:
+   ```shell
+   export PATH="$PATH:$HOME/.dotnet/tools/"
    ```
   
    O banco de dados, deverá ser iniciado com o comando:
@@ -55,8 +65,10 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
    Ou a connection string:
    `"Server=localhost;Database=WebScrappingDB;User=SA;Password=Password123;TrustServerCertificate=True"`
 
-   As migrations devem ser aplicadas para subir a DataBase antes da API com:
+   -Após inicializar o banco de dados, você pode criar uma migration inicial e atualizar o banco de dados com os comandos:
    ```shell
+   dotnet restore
+   dotnet ef migrations add InitialCreate
    dotnet ef database update
    ```
    
