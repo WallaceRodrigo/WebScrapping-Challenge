@@ -38,7 +38,7 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
    - Certifique-se de ter o `runtime do .NET` instalado em seu sistema `sudo apt install aspnetcore-runtime-6.0`.
    - Certifique-se de ter a ferramenta dotnet-ef instalada `dotnet tool update dotnet-ef --version 7.0.4 --global`
    - Certifique-se de ter o `Docker` e o `Docker-compose` instalados
-   - Caso não tenha-os instalados pode seguir o guia: [Guia De Instalação Docker]([https://www.google.com](https://gist.github.com/WallaceRodrigo/8529d799add3f513ea4dbac5dc59d8d6))
+   - Caso não tenha-os instalados pode seguir o guia: [Guia De Instalação Docker](https://gist.github.com/WallaceRodrigo/8529d799add3f513ea4dbac5dc59d8d6)
      
    - Agora verifique se a CLI foi instalada com sucesso com o comando:
    ```shell
