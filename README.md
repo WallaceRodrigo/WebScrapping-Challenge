@@ -36,9 +36,9 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
    - Navegue até a pasta `BackEnd`.
    - Certifique-se de ter o `SDK do .NET Core 6.0` instalado em seu sistema `sudo apt install dotnet6`.
    - Certifique-se de ter o `runtime do .NET` instalado em seu sistema `sudo apt install aspnetcore-runtime-6.0`.
-   - Certifique-se de ter a ferramenta dotnet-ef instalada `dotnet tool update dotnet-ef --version 7.0.4 --global`
    - Certifique-se de ter o `Docker` e o `Docker-compose` instalados
    - Caso não tenha-os instalados pode seguir o guia: [Guia De Instalação Docker](https://gist.github.com/WallaceRodrigo/8529d799add3f513ea4dbac5dc59d8d6)
+   - Certifique-se de ter a ferramenta dotnet-ef instalada `dotnet tool update dotnet-ef --version 7.0.4 --global`
      
    - Agora verifique se a CLI foi instalada com sucesso com o comando:
    ```shell
@@ -68,7 +68,6 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
    -Após inicializar o banco de dados, você pode criar uma migration inicial e atualizar o banco de dados com os comandos:
    ```shell
    dotnet restore
-   dotnet ef migrations add InitialCreate
    dotnet ef database update
    ```
    
@@ -85,7 +84,7 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
 ## Descrição das Funcionalidades
 - **Extrair Alimentos:** Na página inicial, é possível inserir o número da página desejada do site TBCA.net.br e extrair os alimentos dessa página, os dados extraido são salvos no bando de dados SQLServer.
 - **Pesquisar Alimentos:** Também é possível pesquisar por alimentos específicos digitando o nome do alimento na barra de pesquisa, a pesquisa é feita a partir do bando de dados SQLServer.
-- **Exibir Componentes Detalhasdos Dos Alimentos:** Ao clicar em um dos alimentos da tabela uma nova janela ira abrir contendo uma tabela com todos os componentes do alimento selecionado.
+- **Exibir Componentes Detalhados Dos Alimentos:** Ao clicar em um dos alimentos da tabela uma nova janela ira abrir contendo uma tabela com todos os componentes do alimento selecionado.
 
 ## Descrição das Técnicas Utilizadas
 - **Web Scraping:** O backend utiliza a biblioteca HtmlAgilityPack para fazer o scraping do site TBCA.net.br e extrair os dados relacionados aos alimentos.
