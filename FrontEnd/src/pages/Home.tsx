@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './Home.css'
-import { Aliment, SingleComponent } from '../types/aliments.types';
+import { Aliment } from '../types/aliments.types';
 import Spinner from 'react-bootstrap/Spinner'
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const [apiResponse, setApiResponse] = useState([]);
-  const [alimentData, setAlimentData] = useState<SingleComponent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingExtract, setIsLoadingExtract] = useState(false);
+  const navigate = useNavigate();
 
   const onClickExtract = async () => {
     setIsLoadingExtract(true);
@@ -27,8 +28,8 @@ function Home() {
 
     try {
       await axios.post(`https://localhost:7070/addAliment/${pageNumber}`)
-    } catch (error) {
-      if (error.response.data.includes("Cannot insert duplicate key")) {
+    } catch (error: unknown) {
+      if ((error as Error & { response?: { data: string } }).response?.data.includes("Cannot insert duplicate key")) {
         alert('A página já foi extraída Anteriormente, porem os dados ainda serão exibidos, clique em OK para continuar');
       } else {
         console.log('Ocorreu um erro ao fazer a requisição:', error);
@@ -63,24 +64,10 @@ function Home() {
     setApiResponse(filteredData.data);
   }
 
-  const onCLick = (data: SingleComponent[]) => {
-    const componentsTableDiv = document.getElementById('componentsTableDiv');
-
-    componentsTableDiv?.scrollIntoView({ behavior: 'smooth' });
-    componentsTableDiv?.classList.add('fadeIn');
-
-    setAlimentData(data);
-    console.log(data);
-  };
-
-  const onCLickCloseComponents = () => {
-    const componentsTableDiv = document.getElementById('componentsTableDiv');
-
-    componentsTableDiv?.classList.add('fadeOut');
-
-    setTimeout(() => {
-      setAlimentData([]);
-    }, 300);
+  const onClick = (alimentId: string) => {
+    console.log(alimentId);
+    
+    navigate(`/${alimentId}`);
   };
 
   return (
@@ -121,50 +108,12 @@ function Home() {
               <tbody>
                 {
                   apiResponse.map((data: Aliment) => (
-                    <tr onClick={() => onCLick(data.components)}>
+                    <tr onClick={() => onClick(data.alimentId)}>
                       <td>{data.alimentId}</td>
                       <td>{data.name}</td>
                       <td>{data.scientificName}</td>
                       <td>{data.group}</td>
                       <td>{data.brand}</td>
-                    </tr>
-                  ))
-                }
-              </tbody>
-            </table>
-          </div>
-      }
-      {
-        alimentData.length < 1 ? <></> :
-          <div id='componentsTableDiv' className='fadeIn'>
-            <button onClick={onCLickCloseComponents}>X</button>
-            <table id="componentsTable">
-              <thead>
-                <tr>
-                  <th>Componente</th>
-                  <th>Unidades</th>
-                  <th>Valor Por 100g</th>
-                  <th>Desvio Padrão</th>
-                  <th>Valor Mínimo</th>
-                  <th>Valor Máximo</th>
-                  <th>Número De Dados Utilizado</th>
-                  <th>Referências</th>
-                  <th>Tipo De Dados</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  alimentData.map((data: SingleComponent) => (
-                    <tr>
-                      <td>{data.componente}</td>
-                      <td>{data.unidades}</td>
-                      <td>{data.valorPor100g}</td>
-                      <td>{data.desvioPadrão}</td>
-                      <td>{data.valorMínimo}</td>
-                      <td>{data.valorMáximo}</td>
-                      <td>{data.númeroDeDadosUtilizado}</td>
-                      <td>{data.referências}</td>
-                      <td>{data.tipoDeDados}</td>
                     </tr>
                   ))
                 }

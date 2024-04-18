@@ -71,4 +71,19 @@ public class webScrapController : Controller
       return NotFound(e.Message);
     }
   }
+
+  [HttpGet("GetAlimentById/{id}")]
+  public ActionResult<IAliment> GetAlimentById(string id)
+  {
+    try
+    {
+      var aliment = _repository.GetAlimentById(id);
+
+      return Ok(aliment);
+    }
+    catch (RequestFailedException e)
+    {
+      return NotFound(e.Message);
+    }
+  }
 }

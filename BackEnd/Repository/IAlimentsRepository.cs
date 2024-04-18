@@ -6,5 +6,6 @@ namespace BackEnd.Repository
   {
     IAliment AddAliment(IAliment aliment);
     IEnumerable<IAliment> GetAliment(string name);
+    IAliment GetAlimentById(string id);
   }
 }
