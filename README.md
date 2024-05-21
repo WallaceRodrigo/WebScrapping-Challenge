@@ -83,7 +83,7 @@ O projeto WebScrapping TBCA é uma aplicação web desenvolvida para extrair dad
    - Navegue até a pasta `FrontEnd`.
    - Execute o comando `npm install` para instalar as dependências do projeto.
    - Execute o comando `npm start` para iniciar o servidor de desenvolvimento do React.
-   - Sera mostrado no console em qual endereço a aplicação podera ser acessada.
+   - Sera mostrado no console em qual endereço a aplicação podera ser acessada. 
 
 ## Descrição das Funcionalidades
 - **Extrair Alimentos:** Na página inicial, é possível inserir o número da página desejada do site TBCA.net.br e extrair os alimentos dessa página, os dados extraido são salvos no bando de dados SQLServer.
